@@ -1,0 +1,61 @@
+{
+  "name": "mailschema",
+  "version": "0.1.2",
+  "description": "Schemas and validation tools for Mail Action Protocol and the MailSchema Registry",
+  "type": "module",
+  "license": "MIT",
+  "author": "MailSchema contributors",
+  "homepage": "https://mailschema.org/tools/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mailschema/javascript.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mailschema/javascript/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./contribution.schema.json": "./dist/contribution.schema.json",
+    "./map-0.1.schema.json": "./dist/map-0.1.schema.json",
+    "./content-review-0.1.schema.json": "./dist/content-review-0.1.schema.json",
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "mailschema": "./bin/mailschema.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  },
+  "keywords": [
+    "email",
+    "schema",
+    "json-schema",
+    "agents",
+    "registry"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
