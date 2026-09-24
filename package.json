@@ -24,6 +24,7 @@
     "./contribution.schema.json": "./dist/contribution.schema.json",
     "./map-0.1.schema.json": "./dist/map-0.1.schema.json",
     "./content-review-0.1.schema.json": "./dist/content-review-0.1.schema.json",
+    "./content-review-0.1.contract.json": "./dist/content-review-0.1.contract.json",
     "./package.json": "./package.json"
   },
   "types": "./dist/index.d.ts",
