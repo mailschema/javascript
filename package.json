@@ -1,6 +1,6 @@
 {
   "name": "mailschema",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Schemas and validation tools for Mail Action Protocol and the MailSchema Registry",
   "type": "module",
   "license": "MIT",
@@ -25,6 +25,8 @@
     "./map-0.1.schema.json": "./dist/map-0.1.schema.json",
     "./content-review-0.1.schema.json": "./dist/content-review-0.1.schema.json",
     "./content-review-0.1.contract.json": "./dist/content-review-0.1.contract.json",
+    "./content-review-0.2.schema.json": "./dist/content-review-0.2.schema.json",
+    "./content-review-0.2.contract.json": "./dist/content-review-0.2.contract.json",
     "./package.json": "./package.json"
   },
   "types": "./dist/index.d.ts",
