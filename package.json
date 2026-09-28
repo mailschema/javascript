@@ -1,11 +1,11 @@
 {
   "name": "mailschema",
-  "version": "0.1.4",
-  "description": "Schemas and validation tools for Mail Action Protocol and the MailSchema Registry",
+  "version": "0.1.5",
+  "description": "Mail Action Protocol 0.2 core artifacts and MailSchema Registry validation",
   "type": "module",
   "license": "MIT",
   "author": "MailSchema contributors",
-  "homepage": "https://mailschema.org/tools/",
+  "homepage": "https://mailschema.org/tools",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mailschema/javascript.git"
@@ -22,11 +22,10 @@
       "import": "./dist/index.js"
     },
     "./contribution.schema.json": "./dist/contribution.schema.json",
-    "./map-0.1.schema.json": "./dist/map-0.1.schema.json",
-    "./content-review-0.1.schema.json": "./dist/content-review-0.1.schema.json",
-    "./content-review-0.1.contract.json": "./dist/content-review-0.1.contract.json",
-    "./content-review-0.2.schema.json": "./dist/content-review-0.2.schema.json",
-    "./content-review-0.2.contract.json": "./dist/content-review-0.2.contract.json",
+    "./map-0.2.schema.json": "./dist/map-0.2.schema.json",
+    "./map-0.2.jsonld": "./dist/map-0.2.jsonld",
+    "./type-contract-0.2.schema.json": "./dist/type-contract-0.2.schema.json",
+    "./forms-0.1.schema.json": "./dist/forms-0.1.schema.json",
     "./package.json": "./package.json"
   },
   "types": "./dist/index.d.ts",
@@ -48,6 +47,7 @@
     "ajv-formats": "3.0.1"
   },
   "devDependencies": {
+    "@types/node": "24.13.6",
     "typescript": "5.9.3"
   },
   "keywords": [
