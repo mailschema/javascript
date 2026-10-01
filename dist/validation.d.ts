@@ -1,4 +1,4 @@
-import type { Contribution, TypeRecord } from './model.js';
+import type { Contribution, TypeRecord } from './model.ts';
 export declare function contributionErrors(value: unknown): string[];
 export declare function assertContribution(value: unknown): asserts value is Contribution;
 export declare function assertTypeRecord(value: unknown): asserts value is TypeRecord;

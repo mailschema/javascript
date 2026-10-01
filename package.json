@@ -1,7 +1,7 @@
 {
   "name": "mailschema",
-  "version": "0.2.1",
-  "description": "Mail Action Protocol 0.2 core artifacts and MailSchema Registry validation",
+  "version": "0.2.2",
+  "description": "Mail Action Protocol 0.2 processing and core artifacts, and MailSchema Registry validation",
   "type": "module",
   "license": "MIT",
   "author": "MailSchema contributors",

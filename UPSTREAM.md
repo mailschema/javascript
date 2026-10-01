@@ -1,6 +1,6 @@
 # Release provenance
 
-Version `0.2.1` derives from [`mailschema/mailschema@db99c15`](https://github.com/mailschema/mailschema/commit/db99c1582f68b3cd3e80d5fe6c029c8535bf470c).
+Version `0.2.2` derives from [`mailschema/mailschema@48c5fd6`](https://github.com/mailschema/mailschema/commit/48c5fd6f189940beb0675f6c1340d5c4c8b3c592). Its `src/core` is that commit's `src/map/core`, the MAP core the reference implementation and conformance suite run on, with only the bundled artifact imports pointing at this package's copies.
 
 The bundled files are exact projections of that source commit and do not independently define MAP:
 
