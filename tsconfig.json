@@ -5,6 +5,8 @@
     "moduleResolution": "Bundler",
     "strict": true,
     "resolveJsonModule": true,
+    "rewriteRelativeImportExtensions": true,
+    "stripInternal": true,
     "esModuleInterop": true,
     "declaration": true,
     "rootDir": "src",

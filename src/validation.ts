@@ -1,7 +1,7 @@
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 import schema from './contribution.schema.json' with { type: 'json' };
-import type { Contribution, TypeRecord } from './model.js';
+import type { Contribution, TypeRecord } from './model.ts';
 
 const ajv = new Ajv2020({ allErrors: true, strict: true, strictRequired: false });
 addFormats(ajv);
