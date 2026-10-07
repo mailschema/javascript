@@ -1,66 +1,69 @@
-import type { ProblemCode } from './documents.ts';
-import type { InputError, JsonObject, MapDescription, MapRequest, TypeContract, TypeReference } from './types.ts';
-/** A type contract that fails its own checks or its pinned digest. */
-export declare class InvalidContract extends Error {
+import { type Description } from './description.ts';
+export interface Operation {
+    id: string;
+    name: string;
+    semantics: string;
+    effects: string[];
+    bindings: ('credential' | 'capability')[];
+    actors: ('human' | 'agent')[];
+    exactTerms: boolean;
+    inputSchema: Record<string, unknown> | null;
+    outcomes: Record<string, string>;
+    capability?: {
+        kind: CapabilityKind;
+        maxLifetimeSeconds: number;
+    };
 }
-/** Reasons the core assigns to the approval lifecycle. */
-export declare const APPROVAL_REASONS: readonly ["declined", "stale-target", "expired", "superseded"];
-/** A MAP problem a request earns before the service's own state is consulted. */
-export type RequestProblem = {
-    code: ProblemCode;
-    title: string;
-    detail: string;
+export interface ContractDocument {
+    id: string;
+    version: string;
+    profile: string;
+    name: string;
+    summary: string;
+    requirements: string[];
+    detailsSchema: Record<string, unknown>;
+    operations: Operation[];
+}
+export type CapabilityKind = keyof typeof CAPABILITY_KINDS;
+/** The capability binding's kinds: the exact effects each declares and its longest lifetime. */
+export declare const CAPABILITY_KINDS: {
+    readonly refusal: {
+        readonly effects: readonly ["refusal", "state"];
+        readonly maxLifetimeSeconds: 604800;
+    };
+    readonly 'protective-report': {
+        readonly effects: readonly ["protection", "state"];
+        readonly maxLifetimeSeconds: 259200;
+    };
+    readonly 'address-confirmation': {
+        readonly effects: readonly ["assertion", "state"];
+        readonly maxLifetimeSeconds: 86400;
+    };
 };
-/**
- * A type contract an implementation vendors, verified against the digest it was pinned by
- * and compiled once. It checks the descriptions, requests, inputs and results of that exact
- * type. The Registry has already applied the contract rules, such as portable patterns, to
- * the contract that digest names; loading refuses anything that would otherwise fail when a
- * request arrives.
- */
+/** Why the value is not a MAP 0.3 type contract, or no reasons. */
+export declare function contractErrors(value: unknown): string[];
+/** A valid contract with its digest and compiled schemas. */
 export declare class Contract {
     #private;
-    readonly document: TypeContract;
+    readonly document: ContractDocument;
+    /** `sha-256:` and the SHA-256 of the contract's RFC 8785 form. */
     readonly digest: string;
-    readonly requestSchema: JsonObject;
-    /**
-     * `digest` is the contract digest the implementation pinned; `dependencies` supplies, by
-     * URL, any pinned schema the package does not bundle.
-     */
-    constructor(contract: unknown, requestSchema: unknown, { digest: pinned, dependencies, }: {
-        digest: string;
-        dependencies?: Record<string, unknown>;
-    });
+    /** The contract, or InvalidDocument with every reason the value is not one. */
+    constructor(value: unknown);
+    /** The contract in the bytes or text, read as MAP JSON within the contract limit. */
+    static parse(input: string | Uint8Array): Contract;
     get id(): string;
     get version(): string;
-    /** The type reference a description and a request of this contract name exactly. */
-    get typeReference(): TypeReference;
-    operation(id: string): import("./types.ts").ContractOperation | undefined;
-    /** Whether completing the operation decides the interaction. */
-    isDecision(id: string): boolean;
+    operation(id: string): Operation | undefined;
+    /** Why the details do not satisfy the contract's details schema, or no reasons. */
+    detailsErrors(details: unknown): string[];
+    /** Why the input is not acceptable for the operation, or no reasons. */
+    inputErrors(operationId: string, input: unknown): string[];
     /**
-     * Every rule a description must satisfy beyond the core schema, for the service that issues
-     * it and the client that receives it.
+     * Why a valid description does not use this contract as it allows, or no reasons: it names
+     * this contract by identifier, version and digest; it offers only declared operations; a
+     * capability appears only where the contract permits one, at the service's origin and
+     * within the kind's lifetime; and its details satisfy the details schema.
      */
-    descriptionErrors(description: unknown): string[];
-    /**
-     * The checks a service makes on a request once it has resolved the description it issued,
-     * compared the description digest and established the caller: the exact type, an offered
-     * operation the authority permits, and expiry. Undefined when they pass. The service then
-     * applies its own state (a decided interaction, a stale target) and `inputErrors`, in that
-     * order, before any effect.
-     */
-    requestProblem(description: MapDescription, request: MapRequest, { now }: {
-        now: Date;
-    }): RequestProblem | undefined;
-    /**
-     * Input problems for one request, each with a detail and a JSON Pointer into its input: the
-     * operation's input schema, then its field bindings against the description's details. Type
-     * rules a contract cannot express are the caller's.
-     */
-    inputErrors(description: MapDescription, request: MapRequest): InputError[];
-    /** A request against the core request definition and this contract's request schema. */
-    requestErrors(request: unknown): string[];
-    /** The core result definition, then the output schema and reason the operation declares. */
-    resultErrors(result: unknown): string[];
+    descriptionErrors(description: Description): string[];
 }

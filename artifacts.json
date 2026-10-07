@@ -1,7 +1,7 @@
 [
-  "contribution.schema.json",
-  "map-0.2.schema.json",
-  "map-0.2.jsonld",
-  "type-contract-0.2.schema.json",
-  "forms-0.1.schema.json"
+  "profile.json",
+  "context.jsonld",
+  "core.schema.json",
+  "contract.schema.json",
+  "implementation.schema.json"
 ]
