@@ -1,7 +1,7 @@
 {
   "name": "mailschema",
-  "version": "0.2.2",
-  "description": "Mail Action Protocol 0.2 processing and core artifacts, and MailSchema Registry validation",
+  "version": "0.3.0",
+  "description": "Mail Action Protocol 0.3: parse and check descriptions, type contracts and implementation records",
   "type": "module",
   "license": "MIT",
   "author": "MailSchema contributors",
@@ -21,11 +21,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./contribution.schema.json": "./dist/contribution.schema.json",
-    "./map-0.2.schema.json": "./dist/map-0.2.schema.json",
-    "./map-0.2.jsonld": "./dist/map-0.2.jsonld",
-    "./type-contract-0.2.schema.json": "./dist/type-contract-0.2.schema.json",
-    "./forms-0.1.schema.json": "./dist/forms-0.1.schema.json",
+    "./profile.json": "./dist/profile.json",
+    "./context.jsonld": "./dist/context.jsonld",
+    "./core.schema.json": "./dist/core.schema.json",
+    "./contract.schema.json": "./dist/contract.schema.json",
+    "./implementation.schema.json": "./dist/implementation.schema.json",
     "./package.json": "./package.json"
   },
   "types": "./dist/index.d.ts",
@@ -52,10 +52,9 @@
   },
   "keywords": [
     "email",
-    "schema",
+    "mail-action-protocol",
     "json-schema",
-    "agents",
-    "registry"
+    "agents"
   ],
   "publishConfig": {
     "access": "public",
