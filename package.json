@@ -1,6 +1,6 @@
 {
   "name": "mailschema",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Mail Action Protocol 0.3: parse and check descriptions, type contracts and implementation records",
   "type": "module",
   "license": "MIT",
