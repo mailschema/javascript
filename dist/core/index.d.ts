@@ -4,4 +4,5 @@ export { sha256 } from './sha256.ts';
 export { descriptionErrors, parseDescription, type Description } from './description.ts';
 export { CAPABILITY_KINDS, Contract, contractErrors, type CapabilityKind, type ContractDocument, type Operation, } from './contract.ts';
 export { implementationErrors, parseImplementation, type ImplementationRecord, } from './implementation.ts';
+export { extractMessage, type MessageProblem, type MessageResult } from './message.ts';
 export { unportablePattern } from './patterns.ts';

@@ -26,5 +26,15 @@ export function createValidator() {
         ajv.removeKeyword(keyword);
     return ajv;
 }
-/** Each validation error as its JSON Pointer and message. @internal */
-export const schemaErrors = (errors, prefix = '') => (errors ?? []).map((error) => `${prefix + error.instancePath || '/'}: ${error.message}`);
+/**
+ * Each validation error as its JSON Pointer and message. An enum or const error names the
+ * values it allows, so the fix is in the message. @internal
+ */
+export const schemaErrors = (errors, prefix = '') => (errors ?? []).map((error) => `${prefix + error.instancePath || '/'}: ${schemaMessage(error)}`);
+function schemaMessage(error) {
+    if (error.keyword === 'enum')
+        return `must be one of ${error.params.allowedValues.map((value) => JSON.stringify(value)).join(', ')}`;
+    if (error.keyword === 'const')
+        return `must be ${JSON.stringify(error.params.allowedValue)}`;
+    return error.message;
+}

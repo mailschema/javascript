@@ -6,4 +6,5 @@ export { sha256 } from "./sha256.js";
 export { descriptionErrors, parseDescription } from "./description.js";
 export { CAPABILITY_KINDS, Contract, contractErrors, } from "./contract.js";
 export { implementationErrors, parseImplementation, } from "./implementation.js";
+export { extractMessage } from "./message.js";
 export { unportablePattern } from "./patterns.js";
