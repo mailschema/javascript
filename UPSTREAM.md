@@ -1,6 +1,6 @@
 # Release provenance
 
-Version `0.3.2` derives from [`mailschema/mailschema@1b41186`](https://github.com/mailschema/mailschema/commit/1b41186a0c843cd12a574038fa9e7bcfca913765). Its sources, tests and bundled files are prepared from that commit by `npm run packages:prepare`.
+Version `0.3.3` derives from [`mailschema/mailschema@8e18e30`](https://github.com/mailschema/mailschema/commit/8e18e3027baf29f65b48169939feb0b4dbf9d3e3). Its sources, tests and bundled files are prepared from that commit by `npm run packages:prepare`.
 
 The bundled MAP 0.3 artifacts are exact copies of that commit's files and do not independently define MAP:
 

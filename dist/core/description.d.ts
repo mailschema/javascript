@@ -37,8 +37,9 @@ export interface Description {
 }
 /**
  * Why the value is not a MAP 0.3 description, or no reasons. Beyond the core schema:
- * expiry follows issuance, operation identifiers are unique, and no security-sensitive
- * identifier contains whitespace, a control or a formatting character.
+ * expiry follows issuance, inLanguage is a well-formed BCP 47 tag, operation identifiers are
+ * unique, and no security-sensitive identifier contains whitespace, a control or a
+ * formatting character.
  */
 export declare function descriptionErrors(value: unknown): string[];
 /** The description in the bytes or text, or InvalidDocument with every reason it is not one. */
